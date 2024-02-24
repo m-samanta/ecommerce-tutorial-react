@@ -1,24 +1,26 @@
 import React, { useContext } from "react";
+import { AppContext } from "../context/AppContext";
 import Product from "./ui/Product";
 import ProductSkeleton from "./ui/ProductSkeleton";
-import { AppContext } from "../context/AppContext";
 
-const Products = () => {
+const TrendingProducts = () => {
   const { products } = useContext(AppContext);
 
   return (
-    <section id="products">
+    <section id="trending-products">
       <div className="container">
         <div className="row products__row">
-          <h2 className="products__title">Products we are proud of</h2>
+          <h2 className="products__title">Trending Now</h2>
           <div className="products__list">
             {products.length > 0
               ? products
-                  .slice(0, 8)
+                  .slice(8, 12)
                   .map((product) => (
-                    <Product key={product.id} product={product} />
+                    <Product product={product} key={product.id} />
                   ))
-              : new Array(8).fill(0).map((_, index) => <ProductSkeleton key={index} />)}
+              : new Array(4)
+                  .fill(0)
+                  .map((_, index) => <ProductSkeleton key={index} />)}
           </div>
         </div>
       </div>
@@ -26,4 +28,4 @@ const Products = () => {
   );
 };
 
-export default Products;
+export default TrendingProducts;
