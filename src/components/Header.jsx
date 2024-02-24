@@ -1,5 +1,9 @@
 import React from "react";
 import HomeImg1 from "../assets/home-img-1.jpg";
+import HomeImg2 from "../assets/home-img-2.jpg";
+import HomeImg3 from "../assets/home-img-3.jpg";
+import HomeImg4 from "../assets/home-img-4.jpg";
+
 
 const Header = () => {
   return (
