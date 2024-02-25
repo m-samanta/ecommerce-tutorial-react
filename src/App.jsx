@@ -1,16 +1,13 @@
 import React, { useEffect, useState } from "react";
-import Banner1 from "./components/Banner1"
-import Header from "./components/Header"
 import Nav from "./components/Nav"
 import Products from "./components/Products"
-import TrendingProducts from "./components/TrendingProducts"
 import { AppContext } from "./context/AppContext"
 import axios from "axios";
-import Banner2 from "./components/Banner2";
 import Newsletter from "./components/Newsletter";
 import Footer from "./components/Footer";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import HomePage from "./Pages/HomePage";
+import ProductsPage from "./Pages/ProductsPage";
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -34,6 +31,7 @@ function App() {
      <Nav />
       <Routes>
         <Route path="/" element={<HomePage />}/>
+        <Route path="/products" element={<ProductsPage />}/>
       </Routes>
       <Newsletter />
       <Footer />
