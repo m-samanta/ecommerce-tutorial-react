@@ -10,8 +10,8 @@ const Nav = () => {
   return (
     <>
     <Navbar setCartOpen={setCartOpen} setMenuOpen={setMenuOpen} />
-    <Menu />
-    <Cart />
+    <Menu menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
+    <Cart cartOpen={cartOpen} setCartOpen={setCartOpen}/>
     </>
   );
 };

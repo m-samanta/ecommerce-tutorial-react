@@ -2,10 +2,10 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
-const Menu = () => {
+const Menu = ({ menuOpen, setMenuOpen }) => {
   return (
-    <nav className="menu">
-      <button className="menu__close">
+    <nav className={`menu ${menuOpen && "menu-open"}`}>
+      <button className="menu__close" onClick={() => setMenuOpen(false)}>
         <FontAwesomeIcon icon={faTimes} />
       </button>
       <div className="menu__links">
