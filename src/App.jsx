@@ -8,6 +8,7 @@ import Footer from "./components/Footer";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import HomePage from "./Pages/HomePage";
 import ProductsPage from "./Pages/ProductsPage";
+import ProductPage from "./Pages/ProductPage";
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -32,6 +33,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />}/>
         <Route path="/products" element={<ProductsPage />}/>
+        <Route path="/products/:id" element={<ProductPage />}/>
       </Routes>
       <Newsletter />
       <Footer />
