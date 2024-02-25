@@ -8,6 +8,7 @@ import { AppContext } from "./context/AppContext"
 import axios from "axios";
 import Banner2 from "./components/Banner2";
 import Newsletter from "./components/Newsletter";
+import Footer from "./components/Footer";
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -34,6 +35,7 @@ function App() {
       <TrendingProducts />
       <Banner2 />
       <Newsletter />
+      <Footer />
     </AppContext.Provider>
   )
 }
