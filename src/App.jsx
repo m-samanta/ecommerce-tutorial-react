@@ -6,9 +6,9 @@ import axios from "axios";
 import Newsletter from "./components/Newsletter";
 import Footer from "./components/Footer";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
-import HomePage from "./Pages/HomePage";
-import ProductsPage from "./Pages/ProductsPage";
-import ProductPage from "./Pages/ProductPage";
+import HomePage from "./pages/HomePage";
+import ProductsPage from "./pages/ProductsPage";
+import ProductPage from "./pages/ProductPage";
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -44,3 +44,4 @@ function App() {
 }
 
 export default App
+
