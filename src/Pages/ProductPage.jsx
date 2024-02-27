@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import ProductSkeleton from "../components/ui/ProductSkeleton";
 import ProductPageSkeleton from "../components/ProductPageSkeleton";
+import SuccessPopup from "../components/ui/SuccessPopup";
 
 const ProductPage = () => {
   const { products, addToCart } = useContext(AppContext);
@@ -13,6 +14,7 @@ const ProductPage = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [quantity, setQuantity] = useState(1);
   const [loading, setLoading] = useState(true);
+  const [successOpen, setSuccessOpen] = useState(false);
 
   async function fetchProduct() {
     try {
@@ -27,10 +29,17 @@ const ProductPage = () => {
       setSelectedImage(productData.images[0]);
 
       setLoading(false);
-    } 
-    catch (error) {
+    } catch (error) {
       alert(error);
     }
+  }
+
+  function openSuccess() {
+    setSuccessOpen(true);
+
+    setTimeout(() => {
+      setSuccessOpen(false);
+    }, 1000);
   }
 
   useEffect(() => {
@@ -41,6 +50,7 @@ const ProductPage = () => {
 
   return (
     <main className="product__main">
+      <SuccessPopup successOpen={successOpen} />
       <div className="container">
         <div className="row product-page__row">
           {loading ? (
@@ -106,9 +116,15 @@ const ProductPage = () => {
                       ${selectedProduct?.price * quantity}
                     </span>
                   </div>
-                  <button className="selected-product__add"
-                  onClick={() => addToCart(selectedProduct, quantity)}
-                  >Add To Cart</button>
+                  <button
+                    className="selected-product__add"
+                    onClick={() => {
+                      addToCart(selectedProduct, quantity)
+                      openSuccess()
+                    }}
+                  >
+                    Add To Cart
+                  </button>
                 </div>
               </div>
               <div className="specifications">

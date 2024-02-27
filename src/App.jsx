@@ -9,6 +9,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import ProductsPage from "./pages/ProductsPage";
 import ProductPage from "./pages/ProductPage";
+import { prefix } from "@fortawesome/free-solid-svg-icons";
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -33,9 +34,25 @@ function App() {
     }
   }
 
-  useEffect(() => {
-    console.log(cart);
-  }, [cart]);
+  function reduceCartQuantity(product) {
+    setCart((prevCart) =>
+      prevCart.map((item) =>
+        (item.id === product.id && item.quantity > 1) ? { ...item, quantity: item.quantity - 1 } : item
+      )
+    );
+  }
+
+  function removeFromCart(product){
+    setCart(prevCart => prevCart.filter(item => item.id !== product.id))
+  }
+
+function cartLength(){
+  let counter = 0
+  cart.forEach((item) => {
+    counter += item.quantity
+  })
+  return counter
+}
 
   async function fetchProducts() {
     const { data } = await axios.get(
@@ -52,7 +69,7 @@ function App() {
   }, []);
 
   return (
-    <AppContext.Provider value={{ products, addToCart }}>
+    <AppContext.Provider value={{ products, addToCart, cart, reduceCartQuantity, removeFromCart, cartLength }}>
       <Router>
         <Nav />
         <Routes>
