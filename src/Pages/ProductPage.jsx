@@ -7,7 +7,7 @@ import ProductSkeleton from "../components/ui/ProductSkeleton";
 import ProductPageSkeleton from "../components/ProductPageSkeleton";
 
 const ProductPage = () => {
-  const { products } = useContext(AppContext);
+  const { products, addToCart } = useContext(AppContext);
   const { id } = useParams();
   const [selectedProduct, setSelectedproduct] = useState(null);
   const [selectedImage, setSelectedImage] = useState(null);
@@ -106,7 +106,9 @@ const ProductPage = () => {
                       ${selectedProduct?.price * quantity}
                     </span>
                   </div>
-                  <button className="selected-product__add">Add To Cart</button>
+                  <button className="selected-product__add"
+                  onClick={() => addToCart(selectedProduct, quantity)}
+                  >Add To Cart</button>
                 </div>
               </div>
               <div className="specifications">
